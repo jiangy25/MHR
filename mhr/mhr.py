@@ -19,9 +19,17 @@ from pathlib import Path
 from typing import Literal
 
 import numpy as np
-import pymomentum.geometry as pym_geometry
+try:
+    import pymomentum.geometry as pym_geometry
+    PYMOMENTUM_AVAILABLE = True
+except ImportError:
+    PYMOMENTUM_AVAILABLE = False
+    pym_geometry = None
 
-import pymomentum.torch.character as torch_character
+try:
+    import pymomentum.torch.character as torch_character
+except ImportError:
+    torch_character = None
 
 import torch
 
